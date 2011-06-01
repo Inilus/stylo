@@ -1,4 +1,32 @@
 Stylo::Application.routes.draw do
+
+#  get "pages/home"
+
+#  root :to => 'pages#home'
+  root :to => "users#index"
+
+  # Omniauth
+  match "/signin"                 => "services#signin"
+  match "/signout"                => "services#signout"
+  match "/auth/:service/callback" => "services#create"
+  match "/auth/failure"           => "services#failure"
+  resources :services, :only => [ :index, :create, :destroy ] do
+    collection do
+      get  "signin"
+      get  "signout"
+      get  "signup"
+      get  "failure"
+      post "newaccount"
+    end
+  end
+
+  # user for demo app
+  resources :users, :only => [ :index ] do
+    collection do
+      get "test"
+    end
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -56,3 +84,4 @@ Stylo::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 end
+
