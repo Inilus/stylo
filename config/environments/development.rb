@@ -28,9 +28,13 @@ Stylo::Application.configure do
     # you need a store for OpenID; (if you deploy on heroku you need Filesystem.new('./tmp') instead of Filesystem.new('/tmp'))
     require 'openid/store/filesystem'
 
+    # load certificates
+    require "openid/fetchers"
+    OpenID.fetcher.ca_file = "#{ Rails.root }/config/ca-bundle.crt"
+
     # providers with id/secret, you need to sign up for their services (see below) and enter the parameters here
-#    provider :facebook, 'APP_ID', 'APP_SECRET'
-#    provider :twitter, 'CONSUMER_KEY', 'CONSUMER_SECRET'
+    provider :facebook, "223248047703588", "b0f6c5791bb8eeeb178179c0f022c3f7"
+    provider :twitter, 'g4yfIioq5jhmKm6k5ukrA', '74UxvKtcijz234kDURsGmZrgO8fbS0dt1z3HcWZ3lbY'
     # Sign-up urls for Facebook, Twitter, and Github
     # https://developers.facebook.com/setup
     # https://developer.twitter.com/apps/new
@@ -44,8 +48,8 @@ Stylo::Application.configure do
    # provider :google_apps, OpenID::Store::Filesystem.new('./tmp'), :name => 'google_apps'
    # /auth/google_apps; you can bypass the prompt for the domain with /auth/google_apps?domain=somedomain.com
 
-#   provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'yahoo', :identifier => 'yahoo.com'
-#   provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'aol', :identifier => 'openid.aol.com'
+   provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'yahoo', :identifier => 'yahoo.com'
+   provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'aol', :identifier => 'openid.aol.com'
    provider :openid, OpenID::Store::Filesystem.new('./tmp'), :name => 'myopenid', :identifier => 'myopenid.com'
 
   end

@@ -1,5 +1,5 @@
 class Service < ActiveRecord::Base
-  belong_to :user
+  belongs_to :user
 
   attr_accessible :provider, :uid, :uname, :uemail
 end
