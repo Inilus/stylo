@@ -97,19 +97,19 @@ class ServicesController < ApplicationController
             @authhash[:provider] = omniauth['provider'] :
             @authhash[:provider] = ''
 ## TODO: Add providers:
-#      elsif service_route == 'facebook'
-#        omniauth['extra']['user_hash']['email'] ?
-#            @authhash[:email] =  omniauth['extra']['user_hash']['email'] :
-#            @authhash[:email] = ''
-#        omniauth['extra']['user_hash']['name'] ?
-#            @authhash[:name] =  omniauth['extra']['user_hash']['name'] :
-#            @authhash[:name] = ''
-#        omniauth['extra']['user_hash']['id'] ?
-#            @authhash[:uid] =  omniauth['extra']['user_hash']['id'].to_s :
-#            @authhash[:uid] = ''
-#        omniauth['provider'] ?
-#            @authhash[:provider] = omniauth['provider'] :
-#            @authhash[:provider] = ''
+      elsif service_route == 'facebook'
+        omniauth['extra']['user_hash']['email'] ?
+            @authhash[:email] =  omniauth['extra']['user_hash']['email'] :
+            @authhash[:email] = ''
+        omniauth['extra']['user_hash']['name'] ?
+            @authhash[:name] =  omniauth['extra']['user_hash']['name'] :
+            @authhash[:name] = ''
+        omniauth['extra']['user_hash']['id'] ?
+            @authhash[:uid] =  omniauth['extra']['user_hash']['id'].to_s :
+            @authhash[:uid] = ''
+        omniauth['provider'] ?
+            @authhash[:provider] = omniauth['provider'] :
+            @authhash[:provider] = ''
 #      elsif service_route == 'github'
 #        omniauth['user_info']['email'] ?
 #            @authhash[:email] =  omniauth['user_info']['email'] :
